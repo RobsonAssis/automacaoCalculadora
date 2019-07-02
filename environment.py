@@ -11,9 +11,12 @@ from Pyautomators import Ambiente
 from pages.pages.calc import Calculadora
 from Pyautomators import *
 from time import sleep
+
+
 def before_all(context):
 	context.app = Desk('C:\Windows\System32\calc.exe', Driver_Winium='driver\Winium.Desktop.Driver.exe')
 	context.calc = Calculadora(context.app)
+	
 def before_feature(context,feature):
 	pass
 
@@ -34,4 +37,3 @@ def after_feature(context,feature):
 
 def after_all(context):
 	pass
-

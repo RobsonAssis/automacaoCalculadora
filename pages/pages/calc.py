@@ -2,10 +2,15 @@ from Pyautomators.desk import Desk
 from Pyautomators.mouse_teclado import Teclado
 from Pyautomators.mouse_teclado import Mouse
 from Pyautomators.Verifica import Valida
+import pyautogui
+from PIL import Image
+import pytesseract
 from time import sleep
 
-class Calculadora():
 
+
+class Calculadora():
+    
     def __init__(self,app):
         self.app = app
 
@@ -22,8 +27,13 @@ class Calculadora():
         self.app.clica_imagem(r'data\images\padrao.png', similar=70)
         self.validacao_tela(imagem=r'data\images\validaPadrao.png')
         self.app.clica_imagem(r'data\images\validaPadrao.png', similar=70)
-        
+    
+    '''def pega_localizacao():
+        x,y,w,h = pyautogui.locateOnScreen(r'teste.png')
+        return x,y,w,h
+'''
 
+        
     def abrir_cientifica(self):
         self.app.clica_imagem(r'data\images\menu.png', similar=70)
         self.app.clica_imagem(r'data\images\cientifica.png', similar=70)
@@ -36,6 +46,7 @@ class Calculadora():
             
 
     def calcular(self,operacao,valor1, valor2):
+        
         if(valor1 == '1'):
             self.app.clica_imagem(r'data\images\numero1.png', similar=70)
         elif(valor1 == '2'):
@@ -83,10 +94,25 @@ class Calculadora():
         elif(valor1 == '9'):
             self.app.clica_imagem(r'data\images\numero9.png', similar=70)
 
-    def valida_valor(self):
+
+    def valida_valor(self,):
         self.app.clica_imagem(r'data\images\resultado.png', similar=70)
+        res = pyautogui.screenshot(region=(781,180,24,42))
+        res.save(r'data\images\res.png')
+
+        '''res = pyautogui.locateOnScreen(r'data\images\teste.png')
+        res = pyautogui.screenshot(region=(x,y,w,h))
+        res.save(r'data\images\res.png')
+        res_texto = pytesseract.image_to_string(r'data\images\res.png')
+        print(res_texto)    
+    '''
+    def menu_padrao(self):
         self.app.clica_imagem(r'data\images\menu.png', similar=70)
         self.app.clica_imagem(r'data\images\padrao.png', similar=70)
+        
+       
     
+  
+        
 
         

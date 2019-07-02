@@ -21,8 +21,9 @@ def step_impl(context):
 
 @when(u'calcular os valores')
 def step_impl(context):
-    context.calc.calcular(valor1='9',operacao='multiplicacao', valor2='2')
+    context.calc.calcular(valor1='2',operacao='multiplicacao', valor2='2')
 
 @then(u'o resultado da conta ira aparecer')
 def step_impl(context):
     context.calc.valida_valor()
+    context.calc.menu_padrao()
